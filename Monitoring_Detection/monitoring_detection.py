@@ -6,6 +6,9 @@ import os
 import hashlib
 from googletrans import Translator
 import hmac
+import sys
+#sys.path.append('/media/sf_Ransomware_Group8/Mitigation')
+from  Mitigation import deleteProcesses
 
 #generates a key for the hmac signature
 os.system('head -c 256 /dev/urandom > key.bin')
@@ -14,7 +17,7 @@ os.system('head -c 256 /dev/urandom > key.bin')
 detector = Translator()
 
 #target directory path (make change accordingly to your target directory)
-rootdir = '/home/sec-lab/Desktop/projectfiles'
+rootdir = '/media/sf_Ransomware_Group8/Action/Victim_machine/Imp'
 
 #rading the generated key
 file_in = open('key.bin', 'rb')
@@ -65,16 +68,16 @@ while True:
                         dec_lan = detector.detect(content)
                         
                         #if the probability of english is less than 50% than file is most probably encrypted
-                        if dec_lan.confidence < 0.5:
-                        
+                        if dec_lan.confidence < 0.5: 
                             #rise an alert and start the mitigation process
                             print(colored('[+] ALERT High Priority - Anonymous encryption in '
                                          + file_path, 'red'))
                             print(colored('Dont worry, mitigation has been started', 'green'))
-                            # metigation starts here
+                            # mitigation starts here
+                            deleteProcesses(file_path)
 
                         else:
-                            #if the content is in English than it must be changed by the user
+                            #if the content is in English then it must be changed by the user
                             print('[+] ALERT Low Priority - Someone edited the ' + file_path)
 
                     except UnicodeDecodeError:

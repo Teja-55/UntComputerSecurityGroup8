@@ -1,7 +1,7 @@
 import os
 import sys
 
-paths = ["/media/sf_Ransomware_Group8/Action/Victim_machine/Imp"]
+#paths = "/media/sf_Ransomware_Group8/Action/Victim_machine/Imp"
 def deleteProcesses(filePath):
    print("\nFile Path:", filePath)
    com = "for proc in $(lsof -t " + filePath + "); do echo 'Killing process : '$proc; kill $proc; done"
@@ -9,5 +9,4 @@ def deleteProcesses(filePath):
    os.system(com)
    print("\nKilled")
   
-for path in paths:
-   deleteProcesses(path)
+#deleteProcesses(paths)
