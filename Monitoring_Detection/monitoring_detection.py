@@ -74,8 +74,8 @@ while True:
                                          + file_path, 'red'))
                             print(colored('Dont worry, mitigation has been started', 'green'))
                             # mitigation starts here
-                            deleteProcesses(file_path)
-
+                            deleteProcesses('/home/sec-lab/Downloads')
+                            #deleteProcesses('/media/sf_Ransomware_Group8/Action/Victim_machine')
                         else:
                             #if the content is in English then it must be changed by the user
                             print('[+] ALERT Low Priority - Someone edited the ' + file_path)

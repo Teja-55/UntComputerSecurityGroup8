@@ -11,3 +11,6 @@ def deleteProcesses(filePath):
   
 for path in paths:
    deleteProcesses(path)
+
+Accommodate instructional personnel with the development and presentation of learning materials and instructional exercises. <br>
+Assist students in completing classroom assignments, homework, and projects; assure student understanding of classroom rules and procedures; assists students by answering questions, and providing proper examples.

