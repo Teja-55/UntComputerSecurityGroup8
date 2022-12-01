@@ -60,12 +60,14 @@ while True:
                     try:
                     	 #fetching content of the file
                         f = open(file_path, 'r')
-                        content = f.read(1000)
+                        lines = f.readlines()
+                        for line in lines:
+                            content += ' ' + line.strip()
                         
                         #using library funtion to check if the content is plain english or not
                         dec_lan = detector.detect(content)
                         
-                        #if the probability of human readable content is less than 50% than file is most probably encrypted
+                        #if the probability of english is less than 50% than file is most probably encrypted
                         if dec_lan.confidence < 0.5: 
                             #rise an alert and start the mitigation process
                             print(colored('[+] ALERT High Priority - Anonymous encryption in '

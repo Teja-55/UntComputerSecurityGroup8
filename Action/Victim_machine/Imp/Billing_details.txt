@@ -1,1 +1,6 @@
 This file contains everyday billing details of the dining business
+
+Bill No		Purchaser	Seller
+1		Ricky		Donald
+2		Nick		Ross
+3		Suraj		Shruthi

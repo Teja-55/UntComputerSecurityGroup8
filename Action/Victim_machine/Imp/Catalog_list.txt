@@ -1,1 +1,8 @@
 This file contains the catalog menu details of the restaurant
+Catalog ID 	Name	Price
+1		Salad	$9
+2		Quacker	$5
+3		Pasta	$8
+4		Noodles	$7
+5		Cookies	$3
+
